@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState, useEffect, useContext} from 'react'
+import { Route, Redirect } from 'react-router-dom'
+import {UserContext} from './context/userContext'
+import axios from 'axios'
+import NavBar from './components/navBar'
+import Home from './pages/home'
 
 function App() {
+  const {fetchUser} = useContext(UserContext)
+  const [form, setForm] = useState(null)
+
+  useEffect(()=>{fetchUser()},[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavBar setForm={setForm} />
+      <Route exact path= '/' render={()=><Home form={form} setForm={setForm} />} />
+
     </div>
   );
 }
