@@ -8,16 +8,19 @@ const LogSign = (props) =>{
     const [name,setName] = useState(null)
     const [email,setEmail] = useState(null)
     const [password,setPassword] = useState(null)
+    const [zip, setZip] = useState(null)
 
     const handleSubmit = async (e) =>{
         e.preventDefault()
         const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/${props.form}`,{
-            name,email,password
+            name,email,password,zip
         })
         if(res.data.message === "success"){
             props.setForm(null)
+            props.togglePopup()
             localStorage.setItem('userId', res.data.user.id)
             setUser(res.data.user)
+            props.getNearby()
         }
     }
     
@@ -30,7 +33,10 @@ const LogSign = (props) =>{
             }
             <form onSubmit={(e)=>{handleSubmit(e)}} >            
             {props.form === 'signup' &&
-                <input type='text' placeholder='Name' value={name} onChange={(e)=>{setName(e.target.value)}} required />     
+            <>
+                <input type='text' placeholder='Name' value={name} onChange={(e)=>{setName(e.target.value)}} required />
+                <input type='text' placeholder='Zipcode' value={zip} onChange={(e)=>{setZip(e.target.value)}} required />     
+            </>
             }   
                 <input type='email' placeholder='Email' value={email} onChange={(e)=>{setEmail(e.target.value)}} required />   
                 <input type='password' placeholder='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}} required />

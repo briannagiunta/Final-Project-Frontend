@@ -8,25 +8,38 @@ const NavBar = (props) =>{
     
     return(
         <nav>
-            <span onClick={()=>{props.setForm(null)}}>
+            <span onClick={()=>{
+                props.setForm(null)
+                props.setShouldPopup(false)
+            }}>
                 <Link to= '/'>Home</Link>{'  |  '}
             </span>
-            
+
             {!user.id ? 
             <>
-                <span onClick={()=>{props.setForm('signup')}}>
+                <span onClick={()=>{
+                    props.setForm('signup')
+                    props.setShouldPopup(true)
+                    }}>
                     <Link to= '/'>Sign Up</Link>{'  |  '}
                 </span>
                 
-                <span onClick={()=>{props.setForm('login')}}>
+                <span onClick={()=>{
+                    props.setForm('login')
+                    props.setShouldPopup(true)
+                }}>
                     <Link to= '/'>Login</Link>
                 </span>
             </>
             :
+            <>
+                <Link to= '/profile'>Profile</Link>{'  |  '}
+                <Link to= '/matches'>Matches</Link>{'  |  '}
                 <span onClick={()=>{
                     localStorage.removeItem('userId')
                     setUser({})
                 }}><Link to= '/'>Logout</Link></span>
+            </>
             }
         </nav>
     )
