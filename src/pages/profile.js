@@ -20,7 +20,7 @@ const Profile = () =>{
     }
     
     return(
-        <>
+    <>
         {shouldPopup === true && dog &&
             <Popup dog={dog} togglePopup={togglePopup} edit={edit} setEdit={setEdit} />       
         }
@@ -46,8 +46,7 @@ const Profile = () =>{
 
             </div>      
         </div>
-  
-        </>
+    </>
     )
 }
 

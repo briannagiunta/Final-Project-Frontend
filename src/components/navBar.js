@@ -8,6 +8,8 @@ const NavBar = (props) =>{
     
     return(
         <nav>
+            {!user.id ? 
+            <>
             <span onClick={()=>{
                 props.setForm(null)
                 props.setShouldPopup(false)
@@ -15,8 +17,6 @@ const NavBar = (props) =>{
                 <Link to= '/'>Home</Link>{'  |  '}
             </span>
 
-            {!user.id ? 
-            <>
                 <span onClick={()=>{
                     props.setForm('signup')
                     props.setShouldPopup(true)
@@ -33,6 +33,7 @@ const NavBar = (props) =>{
             </>
             :
             <>
+                <Link to= '/dashboard'>Dashboard</Link>{'  |  '}
                 <Link to= '/profile'>Profile</Link>{'  |  '}
                 <Link to= '/matches'>Matches</Link>{'  |  '}
                 <span onClick={()=>{

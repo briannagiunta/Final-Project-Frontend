@@ -7,9 +7,11 @@ import NavBar from './components/navBar'
 import Home from './pages/home'
 import Profile from './pages/profile'
 import Matches from './pages/matches'
+import Carousel from './pages/carousel'
 
 function App() {
-  const {fetchUser} = useContext(UserContext)
+  const {userState, fetchUser} = useContext(UserContext)
+  const [user, setUser] = userState
   const [form, setForm] = useState(null)
   const [shouldPopup, setShouldPopup] = useState(false)
 
@@ -22,9 +24,34 @@ function App() {
   return (
     <div className="App">
       <NavBar setForm={setForm} setShouldPopup={setShouldPopup}/>
-      <Route exact path= '/' render={()=><Home form={form} setForm={setForm} shouldPopup={shouldPopup} togglePopup={togglePopup}/>} />
-      <Route exact path= '/profile' render={()=> <Profile />} />
-      <Route exact path= '/matches' render={()=> <Matches />} />
+      <Route exact path= '/' render={()=> {
+        if(user.id){
+          return <Redirect to='/dashboard'/>
+        }else{
+          return <Home form={form} setForm={setForm} shouldPopup={shouldPopup} togglePopup={togglePopup}/>
+        } 
+      }} />
+      <Route exact path= '/dashboard' render={()=> {
+        if(!user.id){
+          return <Redirect to='/'/>
+        }else{
+          return <Carousel />
+        }
+      }} />
+      <Route exact path= '/profile' render={()=>{
+        if(!user.id){
+          return <Redirect to='/'/>
+        }else{
+          return <Profile />
+        }
+      }} />
+      <Route exact path= '/matches' render={()=> {
+        if(!user.id){
+          return <Redirect to='/'/>
+        }else{
+          return <Matches />
+        }
+      }} />
     </div>
   );
 }

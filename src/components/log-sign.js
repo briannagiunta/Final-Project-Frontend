@@ -3,7 +3,7 @@ import {useContext, useState} from 'react'
 import {UserContext} from '../context/userContext'
 
 const LogSign = (props) =>{
-    const {userState} = useContext(UserContext)
+    const {userState, getNearby} = useContext(UserContext)
     const [user,setUser] = userState
     const [name,setName] = useState(null)
     const [email,setEmail] = useState(null)
@@ -20,7 +20,7 @@ const LogSign = (props) =>{
             props.togglePopup()
             localStorage.setItem('userId', res.data.user.id)
             setUser(res.data.user)
-            props.getNearby()
+            getNearby()
         }
     }
     
