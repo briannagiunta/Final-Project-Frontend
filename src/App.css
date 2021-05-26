@@ -51,6 +51,12 @@ form{
   width: 80%;
   border: 1px solid red;
 }
+.content-row{
+  height: 90%;
+  width: 80%;
+  border: 1px solid red;
+  display:flex;
+}
 .top{
   height:40%;
   width: 100%;
@@ -69,6 +75,19 @@ img{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+
+.left{
+  height: 100%;
+  width: 30%;
+  border-right: 1px solid red;
+  display: flex;
+  flex-direction: column;
+}
+
+.right{
+  height: 100%;
+  width: 70%;
 }
 
 .dogs{
@@ -139,6 +158,7 @@ h3{
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 1;
 }
 .close-div{
   width: 99%;
@@ -173,5 +193,4 @@ h3{
 
 .carousel{
   width: 100%;
-  border: solid blue;
 }

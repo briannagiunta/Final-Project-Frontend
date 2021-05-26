@@ -4,6 +4,7 @@ import LogSign from './log-sign'
 import Upload from './uploadForm'
 import AboutForm from './aboutForm'
 import DogForm from './dogForm'
+import {Link} from 'react-router-dom'
 
 const Popup = (props) =>{
     return(
@@ -28,6 +29,13 @@ const Popup = (props) =>{
             }
             {props.edit === 'add-dog' && 
                 <DogForm togglePopup={props.togglePopup}/>
+            }
+            {props.match && 
+            <>
+                <h1>Its a match!</h1>
+                <div>{props.user.name} thinks your pups would get along great too!</div>
+                <Link to= '/matches'>View Matches</Link>
+            </>
             }
 
         </div>
