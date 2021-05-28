@@ -7,6 +7,13 @@ const About = (props) =>{
     
     return(
         <div className = 'about-container'>
+            <div className='edit-div'>
+                    <img onClick={()=>{
+                    props.setEdit('about')
+                    props.setShouldPopup(true)
+                }} className='edit' src = 'https://www.pngfind.com/pngs/m/275-2755033_edit-png-file-on-phone-svg-edit-icon.png'/>
+                </div>
+            <div className = 'about-info'>
             {user.dogs && user.dogs.length > 0 ? 
             <>
                 <div className='username'>{user.name}</div>
@@ -28,6 +35,7 @@ const About = (props) =>{
                     props.setShouldPopup(true)
                 }}>Add an about me</button>
             }
+            </div>
         </div>
     )
 }

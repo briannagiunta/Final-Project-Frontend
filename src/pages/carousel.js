@@ -30,16 +30,20 @@ const Carousel = () => {
             getNearby()
         }else if(res.data.message === 'users matched'){
             setCurrentSwipe(user)
-            setShouldPopup(true)
+            setShouldPopup('match')
             getNearby()
         }
     }
     
     useEffect(()=>{getNearby()},[])
+    useEffect(()=>{setShouldPopup(false)},[])
   return (
 <>
-    {shouldPopup === true && 
+    {shouldPopup === 'match' && 
         <Popup match user={currentSwipe} togglePopup={togglePopup}/>
+    }
+    {shouldPopup === 'view-user' && 
+        <Popup viewuser user={currentSwipe} togglePopup={togglePopup}/>
     }
     <div className = 'page-column'>
       <ReactSwipe
@@ -50,12 +54,15 @@ const Carousel = () => {
       >
         {nearbyUsers.map(user=>
             <div key = {user.id}>
-                <User user={user} />
+                <User setShouldPopup={setShouldPopup} setCurrentSwipe={setCurrentSwipe} user={user} />
             </div>
         )}
 
       </ReactSwipe>
-      <button onClick={() => reactSwipeEl.next()}>Next</button>
+      <div className='swipe-buttons'>
+        <button onClick={() => reactSwipeEl.prev()}>Previous</button>
+        <button onClick={() => reactSwipeEl.next()}>Next</button>
+      </div>
       <button onClick={() => handleLetsPlay(nearbyUsers[reactSwipeEl.getPos()])}>Lets Play!</button>
     </div>
 </>

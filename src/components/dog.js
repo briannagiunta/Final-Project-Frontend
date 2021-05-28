@@ -32,6 +32,38 @@ const Dog = (props) =>{
                     <button onClick={()=>{props.setEdit('edit-dog')}}>Edit {props.dog.name}</button>
                     <button onClick={()=>{removeDog()}}>Remove</button>
                 </div> 
+            : props.isSwipe ?
+
+                <div className = 'dog-row-container'>
+                    {props.i % 2 === 0 ?
+                    <>
+                    <div>
+                        <img src={props.dog.image} className= 'dog-pic'></img>
+                    </div>
+                    <div>
+                        <div>{props.dog.name}</div>
+                        <div>{props.dog.age} years old</div>
+                        <div>{props.dog.description}</div>
+                    </div>
+                    </>
+                    :
+                    <>
+                    <div>
+                        <div>{props.dog.name}</div>
+                        <div>{props.dog.age} years old</div>
+                        <div>{props.dog.description}</div>
+                    </div>
+                    <div>
+                        <img src={props.dog.image} className= 'dog-pic'></img>
+                    </div>
+                    </>
+
+
+                    
+                
+                    }
+                </div>
+
             :
                 <div className = 'dog'>
                     <img src={props.dog.image} className= 'dog-pic' onClick={()=>{

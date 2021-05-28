@@ -13,9 +13,11 @@ const Home = (props) =>{
         {props.shouldPopup === true && 
             <Popup form = {props.form} setForm = {props.setForm} togglePopup={props.togglePopup}/>      
         }
-        <div className = 'page-column'>
-            <h4>Home page</h4>
-        </div>
+
+           <div className='home-pic'>
+           </div>
+
+
         </>
     )
 }

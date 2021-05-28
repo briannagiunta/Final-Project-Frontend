@@ -22,6 +22,7 @@ function App() {
   }
 
   return (
+
     <div className="App">
       <NavBar setForm={setForm} setShouldPopup={setShouldPopup}/>
       <Route exact path= '/' render={()=> {

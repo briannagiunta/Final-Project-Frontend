@@ -35,7 +35,7 @@ const Profile = () =>{
                 </div>
 
                 <div className='bottom'>
-                    <h3>Dogs</h3>
+                    <h3 className='dog-header'>Dogs</h3>
                     <Dogs togglePopup={togglePopup} setEdit={setEdit} setDog={setDog}/>
                     <button onClick={()=>{
                         setDog(null)

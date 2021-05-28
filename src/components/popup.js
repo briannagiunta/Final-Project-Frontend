@@ -6,6 +6,7 @@ import AboutForm from './aboutForm'
 import DogForm from './dogForm'
 import {Link} from 'react-router-dom'
 
+
 const Popup = (props) =>{
     return(
         <div className='popup'>
@@ -13,9 +14,11 @@ const Popup = (props) =>{
                 <button onClick={()=>{props.togglePopup({})}}className='close'>X</button>
             </div>
             {props.form &&
+            <div className = 'pop-container'>
                 <LogSign form = {props.form} setForm = {props.setForm} togglePopup={props.togglePopup}/>
+            </div>
             }
-            {props.dog && props.edit !== 'edit-dog' &&
+            {props.dog && !props.edit &&
                 <Dog dog={props.dog} isPopup setEdit={props.setEdit} togglePopup={props.togglePopup} />
             }
             {props.dog && props.edit === 'edit-dog' &&
@@ -36,6 +39,16 @@ const Popup = (props) =>{
                 <div>{props.user.name} thinks your pups would get along great too!</div>
                 <Link to= '/matches'>View Matches</Link>
             </>
+            }
+            {props.viewuser && 
+                <div className='dogs-popup-container'>
+                    <div>{props.user.name}'s dogs</div>
+                    <div className='dogs-popup'>
+                        {props.user.dogs.map((dog,i)=>
+                        <Dog dog={dog} i={i} isSwipe />
+                        )}
+                    </div>
+                </div>
             }
 
         </div>

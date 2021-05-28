@@ -13,6 +13,9 @@ const Matches = () =>{
     const [chatId, setChatId] = useState(null)
     const [messages, setMessages] = useState([])
     const [message, setMessage] = useState('')
+    const [chatWith, setChatWith] = useState(null)
+    
+    
 
     const getMatches = async () => {
         const userId = localStorage.getItem('userId')
@@ -29,7 +32,10 @@ const Matches = () =>{
     useEffect(()=>{getMessages()},[messages.length])
 
  
-    const getMes = async (chatId) =>{
+    const getMes = async (chatId, m) =>{
+        if(m){
+            setChatWith(m.user)
+        }
         setChatId(chatId)
         const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/chat/messages`,{chat_id: chatId})
         setMessages(res.data.chat.messages)   
@@ -41,22 +47,7 @@ const Matches = () =>{
         })
     }
 
-    const sendMes = async () => {
-        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/chat/send/message`,{
-            chat_id: chatId,
-            content: message
-        },{
-            headers:{
-                Authorization: localStorage.getItem('userId')
-            }
-        })
-        console.log(res);
-        // if(res.data.message === 'message sent'){
-        //     sendMessage()
-        // }   
-    }
-
-     const sendMessage = () => {
+    const sendMessage = () => {
         const userId = localStorage.getItem('userId')
         if(message !== ''){
             socket.emit("message", message,userId,chatId);
@@ -70,15 +61,27 @@ const Matches = () =>{
         <div className= 'page-column'>
             Matches
             <div className='content-row'>
-                <div className='left'>
-                    {matches.map(m=>
-                        <button key={m.user.id} onClick={()=>{getMes(m.chat.id)}}>{m.user.name}</button>
-                    )}
-                </div>
+                {matches.length > 0 ? 
+                <>
+                    <div className='left'>
+                        {matches.map(m=>
+                            <button key={m.user.id} onClick={()=>{getMes(m.chat.id, m)}}>{m.user.name}</button>
+                        )}
+                    </div>
 
-                <div className='right'>
-                    <Chat messages = {messages} message={message} setMessage={setMessage} sendMes = {sendMessage}/>
-                </div>  
+                    <div className='right'>
+                        {chatWith ?
+                        <Chat messages = {messages} message={message} setMessage={setMessage} sendMes = {sendMessage} chatWith={chatWith}/>
+                        :
+                        <div>Click on a conversation to get started!</div>
+                        }
+                    </div>  
+                </>
+                :
+                    <div>You dont have any matches yet</div>
+                
+                }
+
             </div>
         </div>
     )

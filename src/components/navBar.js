@@ -7,6 +7,9 @@ const NavBar = (props) =>{
     const [user,setUser] = userState
     
     return(
+    <div className='header'>
+        <div className='title'>WingPup</div>
+
         <nav>
             {!user.id ? 
             <>
@@ -43,6 +46,7 @@ const NavBar = (props) =>{
             </>
             }
         </nav>
+    </div>
     )
 }
 

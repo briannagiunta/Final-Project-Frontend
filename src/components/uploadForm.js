@@ -19,7 +19,6 @@ const Upload = (props) =>{
             }
         }
         const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/users/upload`,picture,config)
-        console.log(res);
         if (res.data.message === 'image uploaded'){
             setUser(res.data.user)
             props.togglePopup()

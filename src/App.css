@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Chicle&display=swap');
+
 html{
   height: 100%;
   width: 100%;
@@ -6,6 +8,8 @@ html{
 body{
   height: 100%;
   width: 100%;
+  background-color: #8080ff;
+  color: #ffffff;
 }
 #root{
   height: 100%;
@@ -22,6 +26,39 @@ body{
   justify-content: center;
 }
 
+.header{
+  width: 90%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  font-family: Chicle;
+  position: sticky;
+}
+a{
+  font-family: Chicle;
+  font-size: larger;
+}
+.title{
+  font-size: 50px;
+  font-weight: bold;
+}
+.home-pic{
+  background-image: url('./wingpup.png');
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center; 
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.home-greeting{
+  padding: 10px;
+  font-size: x-large;
+  font-weight: bold;
+}
+
 form{
   display: flex;
   flex-direction: column;
@@ -32,40 +69,51 @@ form{
 .page-column{
   height: 90%;
   width: 90%;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: white;
+  color: #8080ff;
+  box-shadow: 0 1px 6px rgb(0 0 0 / 30%), 0 1px 4px rgb(0 0 0 / 30%);
+
 }
+
 .page-row{
   height: 90%;
   width: 90%;
-  border: 1px solid black;
   display: flex;
   justify-content: center;
+  background-color:white;
+  color: #8080ff;
+  box-shadow: 0 1px 6px rgb(0 0 0 / 50%), 0 1px 4px rgb(0 0 0 / 50%);
+
 }
 
 .content{
   height: 90%;
   width: 80%;
-  border: 1px solid red;
+  background-color: white;
+  color: #8080ff;
 }
 .content-row{
   height: 90%;
   width: 80%;
-  border: 1px solid red;
+  background-color: white;
   display:flex;
+  color: #8080ff;
 }
 .top{
   height:40%;
   width: 100%;
-  border-bottom: 1px solid orange;
+  border-bottom: 1px solid #8080ff;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
+button{
+  color:#8080ff;
+}
 img{
   max-width: 250px;
 }
@@ -88,6 +136,10 @@ img{
 .right{
   height: 100%;
   width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .dogs{
@@ -101,12 +153,11 @@ img{
 .profile-pic-container{
   height: 90%;
   width: 30%;
-  border: 1px solid green;
   margin: 5px;
 }
 
 .profile-pic{
-  height: 100%;
+  height: 90%;
   width: 90%;
   border-radius: 50%;
 }
@@ -114,12 +165,27 @@ img{
 .about-container{
   height:90%;
   width: 60%;
-  border: 1px solid green;
   margin: 5px;
+}
+.about-info{
+  height: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+}
+.edit-div{
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.edit{
+  height: 100%;
+}
+.edit:hover{
+  cursor: pointer;
 }
 .username{
   font-size: larger;
@@ -127,6 +193,9 @@ img{
 }
 .about{
   height:40%;
+}
+.dog-header{
+  height: 10%;
 }
 .dog{
   border: 1px solid black;
@@ -159,6 +228,18 @@ h3{
   flex-direction: column;
   align-items: center;
   z-index: 1;
+  color: #8080ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pop-container{
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .close-div{
   width: 99%;
@@ -194,3 +275,43 @@ h3{
 .carousel{
   width: 100%;
 }
+
+.chat-container{
+  height: 80%;
+  width: 80%;
+  overflow-y: scroll;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-message{
+  text-align: left;
+  width: 80%;
+  border: 1px solid blue;
+}
+
+.right-message{
+  text-align: right;
+  width: 80%;
+  border: 1px solid red;
+}
+
+.swipe-buttons{
+  display: flex;
+}
+
+.dogs-popup-container{
+  height: 90%;
+  width: 70%;
+}
+
+.dog-row-container{
+  display: flex;
+  border: 1px solid blue;
+  align-items: center;
+  justify-content: space-between;
+}
+
