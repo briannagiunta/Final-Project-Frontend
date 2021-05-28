@@ -67,7 +67,9 @@ const DogForm = (props) =>{
     return(
         <>
         {props.dog ? 
-            <form onSubmit={(e)=>{handleEdit(e)}}>
+        <>
+            <h1>Edit {props.dog.name}</h1>
+            <form className='dog-form' onSubmit={(e)=>{handleEdit(e)}}>
             <input type='text' placeholder='Name' value={name} onChange={(e)=>{setName(e.target.value)}} required />
             <input type='text' placeholder='Breed' value={breed} onChange={(e)=>{setBreed(e.target.value)}} required />
             <input type='text' placeholder='Age' value={age} onChange={(e)=>{setAge(e.target.value)}} required />
@@ -79,9 +81,11 @@ const DogForm = (props) =>{
             <input type='text' placeholder='Description' value={description} onChange={(e)=>{setDescription(e.target.value)}} required />
             <input type='submit' value={`Edit ${props.dog.name}`}/>
         </form>
+        </>
         :
-
-        <form onSubmit={(e)=>{handleAdd(e)}}>
+        <>
+        <h1>Add a Doggo!</h1>
+        <form className='dog-form' onSubmit={(e)=>{handleAdd(e)}}>
             <input type='text' placeholder='Name' value={name} onChange={(e)=>{setName(e.target.value)}} required />
             <input type='text' placeholder='Breed' value={breed} onChange={(e)=>{setBreed(e.target.value)}} required />
             <input type='text' placeholder='Age' value={age} onChange={(e)=>{setAge(e.target.value)}} required />
@@ -94,6 +98,7 @@ const DogForm = (props) =>{
             <input type='file'onChange={(e)=>{setFile(e.target.files[0])}}  required />
             <input type='submit' value='Add Doggo'/>
         </form>
+        </>
         }
         </>
     )

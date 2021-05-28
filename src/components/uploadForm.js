@@ -27,10 +27,13 @@ const Upload = (props) =>{
 
 
     return(
+        <>
+        <h1>Upload a Profile Picture!</h1>
         <form onSubmit={(e)=>{handleSubmit(e)}}>
             <input type='file'onChange={(e)=>{setFile(e.target.files[0])}}  required />
             <input type='submit' value='Upload' />
         </form>
+        </>
     )
 }
 

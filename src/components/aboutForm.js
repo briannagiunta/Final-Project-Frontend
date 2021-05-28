@@ -33,11 +33,14 @@ const AboutForm = (props) =>{
     }
 
     return(
+        <>
+        <h1>Edit Info</h1>
         <form onSubmit={(e)=>{handleSubmit(e)}}>
             <input type = 'text' value={name} onChange={(e)=>{setName(e.target.value)}} />
-            <input type = 'text' placeholder='Tell us a little about you and your dog!' value={about} onChange={(e)=>{setAbout(e.target.value)}} />
+            <input type = 'text' className='about-form' placeholder='Tell us a little about you and your dog!' value={about} onChange={(e)=>{setAbout(e.target.value)}} />
             <input type = 'submit' value='Submit!'/>
         </form>
+        </>
     )
 }
 

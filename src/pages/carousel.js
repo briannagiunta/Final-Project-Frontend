@@ -45,25 +45,28 @@ const Carousel = () => {
     {shouldPopup === 'view-user' && 
         <Popup viewuser user={currentSwipe} togglePopup={togglePopup}/>
     }
-    <div className = 'page-column'>
-      <ReactSwipe
-        className="carousel"
-        swipeOptions={{ continuous: true }}
-        ref={el => (reactSwipeEl = el)}
-        childCount={nearbyUsers.length}
-      >
-        {nearbyUsers.map(user=>
-            <div key = {user.id}>
-                <User setShouldPopup={setShouldPopup} setCurrentSwipe={setCurrentSwipe} user={user} />
-            </div>
-        )}
+    <div className = 'page'>
+        <h1>WingPups near you!</h1>
+        <div className = 'dash'>
+            <ReactSwipe
+                className="carousel"
+                swipeOptions={{ continuous: true }}
+                ref={el => (reactSwipeEl = el)}
+                childCount={nearbyUsers.length}
+                >
+                {nearbyUsers.map(user=>
+                    <div key = {user.id} >
+                        <User setShouldPopup={setShouldPopup} setCurrentSwipe={setCurrentSwipe} user={user} />
+                    </div>
+                )}
 
-      </ReactSwipe>
-      <div className='swipe-buttons'>
-        <button onClick={() => reactSwipeEl.prev()}>Previous</button>
-        <button onClick={() => reactSwipeEl.next()}>Next</button>
-      </div>
-      <button onClick={() => handleLetsPlay(nearbyUsers[reactSwipeEl.getPos()])}>Lets Play!</button>
+            </ReactSwipe>
+        </div>
+        <div className='swipe-buttons'>
+            <button onClick={() => reactSwipeEl.prev()}>Previous</button>
+            <button onClick={() => reactSwipeEl.next()}>Next</button>
+        </div>
+        <button onClick={() => handleLetsPlay(nearbyUsers[reactSwipeEl.getPos()])}>Lets Play!</button>
     </div>
 </>
   );
